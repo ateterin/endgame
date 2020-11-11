@@ -61,7 +61,7 @@ static void initPlayer()
 	stage.fighterTail = player;
 	
 	player->x = SCREEN_WIDTH / 2 - 35;
-	player->y = SCREEN_HEIGHT - 80;
+	player->y = SCREEN_HEIGHT - 120;
 	player->texture = loadTexture("gfx/player.png");
 	SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
 }
@@ -111,13 +111,13 @@ static void fireBullet(void)
 	stage.bulletTail = bullet;
 	
 	bullet->x = player->x;
-	bullet->y = player->y;
+	bullet->y = player->y + 10;
 	bullet->dy = -PLAYER_BULLET_SPEED;
 	bullet->health = 1;
 	bullet->texture = bulletTexture;
 	SDL_QueryTexture(bullet->texture, NULL, NULL, &bullet->w, &bullet->h);
 	
-	bullet->y += (player->h / 2) - (bullet->h / 2);
+	bullet->x += (player->w / 2) - (bullet->w / 2);
 	
 	player->reload = 20;
 }
